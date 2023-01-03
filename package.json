@@ -1,6 +1,6 @@
 {
   "name": "@gulpjs/to-absolute-glob",
-  "version": "3.0.0",
+  "version": "4.0.0",
   "description": "Make a glob pattern absolute, ensuring that negative globs and patterns with trailing slashes are correctly handled.",
   "author": "Gulp Team <team@gulpjs.com> (https://gulpjs.com/)",
   "contributors": [

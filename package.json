@@ -1,39 +1,48 @@
 {
   "name": "@gulpjs/to-absolute-glob",
-  "description": "Make a glob pattern absolute, ensuring that negative globs and patterns with trailing slashes are correctly handled.",
   "version": "3.0.0",
-  "homepage": "https://github.com/jonschlinkert/to-absolute-glob",
-  "author": "Jon Schlinkert (https://github.com/jonschlinkert)",
+  "description": "Make a glob pattern absolute, ensuring that negative globs and patterns with trailing slashes are correctly handled.",
+  "author": "Gulp Team <team@gulpjs.com> (https://gulpjs.com/)",
   "contributors": [
-    "Blaine Bublitz <blaine.bublitz@gmail.com> (https://twitter.com/BlaineBublitz)",
-    "Brian Woodward <brian.woodward@gmail.com> (https://github.com/doowb)",
-    "Erik Kemperman (https://github.com/erikkemperman)",
-    "Jon Schlinkert <jon.schlinkert@sellside.com> (http://twitter.com/jonschlinkert)"
+    "Blaine Bublitz <blaine.bublitz@gmail.com>"
   ],
-  "repository": "jonschlinkert/to-absolute-glob",
-  "bugs": {
-    "url": "https://github.com/jonschlinkert/to-absolute-glob/issues"
-  },
+  "repository": "gulpjs/to-absolute-glob",
   "license": "MIT",
+  "engines": {
+    "node": ">=10.13.0"
+  },
+  "main": "index.js",
   "files": [
+    "LICENSE",
     "index.js"
   ],
-  "main": "index.js",
-  "engines": {
-    "node": ">=0.10.0"
-  },
   "scripts": {
-    "test": "mocha"
+    "lint": "eslint .",
+    "pretest": "npm run lint",
+    "test": "nyc mocha"
   },
   "dependencies": {
-    "is-absolute": "^1.0.0",
     "is-negated-glob": "^1.0.0"
   },
   "devDependencies": {
-    "mocha": "^3.0.2"
+    "eslint": "^7.32.0",
+    "eslint-config-gulp": "^5.0.1",
+    "eslint-plugin-node": "^11.1.0",
+    "expect": "^27.4.2",
+    "mocha": "^8.4.0",
+    "nyc": "^15.1.0"
   },
   "publishConfig": {
     "access": "public"
+  },
+  "nyc": {
+    "reporter": [
+      "lcov",
+      "text-summary"
+    ]
+  },
+  "prettier": {
+    "singleQuote": true
   },
   "keywords": [
     "absolute",

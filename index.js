@@ -2,9 +2,8 @@
 
 var path = require('path');
 var isNegated = require('is-negated-glob');
-var isAbsolute = require('is-absolute');
 
-module.exports = function(glob, options) {
+module.exports = function (glob, options) {
   // default options
   var opts = options || {};
 
@@ -19,7 +18,7 @@ module.exports = function(glob, options) {
   if (rootDir) {
     rootDir = unescape(rootDir);
     rootDir = unixify(rootDir);
-    if (process.platform === 'win32' || !isAbsolute(rootDir)) {
+    if (process.platform === 'win32' || !path.isAbsolute(rootDir)) {
       rootDir = unixify(path.resolve(rootDir));
     }
     rootDir = escape(rootDir);
@@ -45,7 +44,7 @@ module.exports = function(glob, options) {
   // make glob absolute
   if (rootDir && glob.charAt(0) === '/') {
     glob = join(rootDir, glob);
-  } else if (!isAbsolute(glob) || glob.slice(0, 1) === '\\') {
+  } else if (!path.isAbsolute(glob) || glob.slice(0, 1) === '\\') {
     glob = join(cwd, glob);
   }
 

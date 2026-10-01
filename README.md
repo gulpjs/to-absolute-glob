@@ -13,26 +13,26 @@ Make a glob pattern absolute, ensuring that negative globs and patterns with tra
 ## Usage
 
 ```js
-var toAbsoluteGlob = require('@gulpjs/to-absolute-glob');
+var toAbsoluteGlob = require("@gulpjs/to-absolute-glob");
 
 // All these assume your cwd is `/dev/foo/`
 
-toAbsoluteGlob('a/*.js') === '/dev/foo/a/*.js';
+toAbsoluteGlob("a/*.js") === "/dev/foo/a/*.js";
 
 // Makes a path absolute
-toAbsoluteGlob('a') === '/dev/foo/a';
+toAbsoluteGlob("a") === "/dev/foo/a";
 
 // Retains trailing slashes
-toAbsoluteGlob('a/*/') === '/dev/foo/a/*/';
+toAbsoluteGlob("a/*/") === "/dev/foo/a/*/";
 
 // Makes a negative glob absolute
-toAbsoluteGlob('!a/*.js') === '!/dev/foo/a/*.js';
+toAbsoluteGlob("!a/*.js") === "!/dev/foo/a/*.js";
 
 // Accepts a cwd
-toAbsoluteGlob('a/*.js', { cwd: 'foo' }) === '/dev/foo/foo/a/*.js';
+toAbsoluteGlob("a/*.js", { cwd: "foo" }) === "/dev/foo/foo/a/*.js";
 
 // Accepts a root path
-toAbsoluteGlob('/a/*.js', { root: 'baz' }) === '/dev/foo/baz/a/*.js';
+toAbsoluteGlob("/a/*.js", { root: "baz" }) === "/dev/foo/baz/a/*.js";
 ```
 
 ## API

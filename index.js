@@ -1,7 +1,7 @@
-'use strict';
+"use strict";
 
-var path = require('path');
-var isNegated = require('is-negated-glob');
+var path = require("path");
+var isNegated = require("is-negated-glob");
 
 module.exports = function (glob, options) {
   // default options
@@ -18,7 +18,7 @@ module.exports = function (glob, options) {
   if (rootDir) {
     rootDir = unescape(rootDir);
     rootDir = unixify(rootDir);
-    if (process.platform === 'win32' || !path.isAbsolute(rootDir)) {
+    if (process.platform === "win32" || !path.isAbsolute(rootDir)) {
       rootDir = unixify(path.resolve(rootDir));
     }
     rootDir = escape(rootDir);
@@ -32,59 +32,59 @@ module.exports = function (glob, options) {
   glob = ing.pattern;
 
   // trim starting ./ from glob patterns
-  if (glob.slice(0, 2) === './') {
+  if (glob.slice(0, 2) === "./") {
     glob = glob.slice(2);
   }
 
   // when the glob pattern is only a . use an empty string
-  if (glob.length === 1 && glob === '.') {
-    glob = '';
+  if (glob.length === 1 && glob === ".") {
+    glob = "";
   }
 
   // make glob absolute
-  if (rootDir && glob.charAt(0) === '/') {
+  if (rootDir && glob.charAt(0) === "/") {
     glob = join(rootDir, glob);
-  } else if (!path.isAbsolute(glob) || glob.slice(0, 1) === '\\') {
+  } else if (!path.isAbsolute(glob) || glob.slice(0, 1) === "\\") {
     glob = join(cwd, glob);
   }
 
   // if glob had a trailing `/`, re-add it now in case it was removed
-  if (suffix === '/' && glob.slice(-1) !== '/') {
-    glob += '/';
+  if (suffix === "/" && glob.slice(-1) !== "/") {
+    glob += "/";
   }
 
   // re-add leading `!` if it was removed
-  return ing.negated ? '!' + glob : glob;
+  return ing.negated ? "!" + glob : glob;
 };
 
 function escape(path) {
-  return path.replace(/([({[\]})*?!])/g, '\\$1');
+  return path.replace(/([({[\]})*?!])/g, "\\$1");
 }
 
 function unescape(path) {
-  return path.replace(/\\([({[\]})*?!])/g, '$1');
+  return path.replace(/\\([({[\]})*?!])/g, "$1");
 }
 
 // Before calling unixify, we remove the escapes and then
 // we add them back afterwards to avoid double-escaping
 function unixify(filepath) {
-  return filepath.replace(/\\/g, '/');
+  return filepath.replace(/\\/g, "/");
 }
 
 function join(dir, glob) {
-  if (dir.charAt(dir.length - 1) === '/') {
+  if (dir.charAt(dir.length - 1) === "/") {
     dir = dir.slice(0, -1);
   }
-  if (glob.charAt(0) === '/') {
+  if (glob.charAt(0) === "/") {
     glob = glob.slice(1);
   }
   if (!glob) return dir;
 
   // Resolve `../` segements in the  glob
-  while (glob.slice(0, 3) === '../') {
-    dir = dir.slice(0, dir.lastIndexOf('/'));
+  while (glob.slice(0, 3) === "../") {
+    dir = dir.slice(0, dir.lastIndexOf("/"));
     glob = glob.slice(3);
   }
 
-  return dir + '/' + glob;
+  return dir + "/" + glob;
 }

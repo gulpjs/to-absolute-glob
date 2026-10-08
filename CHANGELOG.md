@@ -1,5 +1,16 @@
 # Changelog
 
+## [5.0.0](https://github.com/gulpjs/to-absolute-glob/compare/v4.0.0...v5.0.0) (2026-10-08)
+
+
+### ⚠ BREAKING CHANGES
+
+* Normalize repository, dropping Node <22.15.0 ([#5](https://github.com/gulpjs/to-absolute-glob/issues/5))
+
+### Miscellaneous Chores
+
+* Normalize repository, dropping Node &lt;22.15.0 ([#5](https://github.com/gulpjs/to-absolute-glob/issues/5)) ([d5e4b0b](https://github.com/gulpjs/to-absolute-glob/commit/d5e4b0bf8c0593ed529abff75bfcba2d17204758))
+
 ## [4.0.0](https://github.com/gulpjs/to-absolute-glob/compare/v3.0.0...v4.0.0) (2023-01-03)
 
 
